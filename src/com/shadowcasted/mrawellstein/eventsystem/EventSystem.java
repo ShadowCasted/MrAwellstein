@@ -4,13 +4,12 @@ import java.util.HashMap;
 
 public class EventSystem {
 	public static void Listen(Object o){
-		try{
-			if(listeners.containsKey(o.getClass())){
-				listeners.get(o.getClass()).parse(o);
-			}else{
-				throw new NoAssignedListenerException("No Listener Assigned...");
-			}
-		}catch(Exception e){e.printStackTrace();}
+		
+		if(listeners.containsKey(o.getClass())){
+			listeners.get(o.getClass()).parse(o);
+		}else{
+			throw new NoAssignedListenerException("No Listener Assigned...");
+		}
 	}
 	
 	public static void addListener(Listener l){listeners.put(l.tolistenfor(), l);}
